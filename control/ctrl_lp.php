@@ -67,7 +67,7 @@ if(isset($strEstado)){
 						if(!$obj_db->executeResultset($rs)){
 							$codigo = $objUtil->obtenerTicket();
 							$clave = md5("sinclave");
-							$id_grupo = 2;
+							$id_grupo = 3;
 							$str_up = "INSERT INTO ums_suscripcion (nombre,cedula,codigo,usuario,clave,id_grupo,fecha,fecha_ingreso) 
 								VALUES ('".$nombre."','".$celular."','".$codigo."','".$email."','".$clave."',".$id_grupo.",NOW(),NOW())";
 								// echo $str_up."echo";
