@@ -74,10 +74,12 @@ function Ajax(){
 ////////////////////////////////////////////////////////////////////////////////////////////////
 function enviar_sorteo(){
 	var nombre = $$("nombre_sus").value;
+	var celular = $$("celular_sus").value;
 	var email = $$("email_sus").value;
 	
 	var er = "";
 	if(nombre=="" || nombre=="NOMBRE Y APELLIDO"){er+="- Ingresa tu <b>Nombre y Apellido</b><br/>";}
+	if(celular=="" || celular=="Celular"){er+="- Ingresa tu <b>Celular</b><br/>";}
 	if(email=="" || email=="E-MAIL"){
 		er+="- Ingresa tu <b>E-mail</b>.<br/>";	
 	}else{
@@ -94,6 +96,7 @@ function enviar_sorteo(){
 		var ajax = Ajax();
 		var valores="";
 		valores+="&nombre="+escape(nombre);
+		valores+="&celular="+celular;
 		valores+="&email="+email;
 		ajax.open("POST","lp_envio.php?r="+Math.random(),true);
 		ajax.onreadystatechange = function(){
@@ -106,6 +109,7 @@ function enviar_sorteo(){
 					var msg ="Tus datos fueron enviados. Muchas gracias por suscribirte.";
 					// $$("mostrar").innerHTML = "";
 					$("#nombre_sus").val("");
+					$("#celular_sus").val("");
 					$("#email_sus").val("");
 					getMensaje("mensaje",msg,"","error",200);	
 				}

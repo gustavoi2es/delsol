@@ -37,10 +37,12 @@ if(isset($strEstado)){
 				if($error==0){
 						
 						$nombre = $objUtil->verificarAtaque($_POST["nombre"]);
+						$celular = $objUtil->verificarAtaque($_POST["celular"]);
 						$email = $objUtil->verificarAtaque(strtolower($_POST["email"]));
 						
 						$str_texto = "<a href='".DOMINIO."'><img src='".DOMINIO."/images/logo_email.png'/></a><br><br>";
 						$str_texto.= "Nombre: <b>".$nombre."</b><br><br>";
+						$str_texto.= "Celular: <b>".$celular."</b><br><br>";
 						$str_texto.= "E-mail: <b>".$email."</b><br><br>";
 						$str_texto.= "<a href='".DOMINIO."'>".NOMBRE_APLICACION."</a>";
 						
@@ -48,7 +50,7 @@ if(isset($strEstado)){
 						// CONTACTO
 						////////////////////////////////////////////////////////////////////////////////////////////////////
 						
-						// $str_up = "INSERT INTO cms_contacto (nombre,telefono,email,texto) VALUES ('[SORTEO] ".$nombre."','".$telefono."','".$email."','".$str_texto."')";
+						// $str_up = "INSERT INTO cms_contacto (nombre,celular,email,texto) VALUES ('[SORTEO] ".$nombre."','".$celular."','".$email."','".$str_texto."')";
 						// if(!$obj_db->executeUpdate($str_up)){
 						// 	$mensaje.="1- Por motivos inesperados no se ha podido cumplir con la solicitud.";
 						// 	$error++;
@@ -65,9 +67,9 @@ if(isset($strEstado)){
 						if(!$obj_db->executeResultset($rs)){
 							$codigo = $objUtil->obtenerTicket();
 							$clave = md5("sinclave");
-							$id_grupo = 3;
-							$str_up = "INSERT INTO ums_suscripcion (nombre,codigo,usuario,clave,id_grupo,fecha,fecha_ingreso) 
-								VALUES ('".$nombre."','".$codigo."','".$email."','".$clave."',".$id_grupo.",NOW(),NOW())";
+							$id_grupo = 2;
+							$str_up = "INSERT INTO ums_suscripcion (nombre,cedula,codigo,usuario,clave,id_grupo,fecha,fecha_ingreso) 
+								VALUES ('".$nombre."','".$celular."','".$codigo."','".$email."','".$clave."',".$id_grupo.",NOW(),NOW())";
 								// echo $str_up."echo";
 								if($obj_db->executeUpdate($str_up)){
 										$ultimo = 0;
@@ -94,7 +96,7 @@ if(isset($strEstado)){
 							$msg_email = "";
 							$msg_email.="<table width=\"600\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">";
 							$msg_email.="<tr><td style=\"font-family:Arial; font-size:12px;color:#121212;background:#ffffff;\">";
-							$msg_email.="<h3>Se ha suscripto un nuevo usuario en ".NOMBRE_APLICACION."</h3><br><br>";
+							$msg_email.="<h2>Se ha suscripto un nuevo usuario en ".NOMBRE_APLICACION."</h2><br><br>";
 							$msg_email.=$str_texto;
 							$msg_email.="</td></tr></table>";
 		

@@ -199,7 +199,7 @@
 			            <div id="mostrar">
 			                <form name="lp" method="post" class="mb-0">
 								<h2 class="di">Suscribite aquí para recibir noticias y novedades</h2>
-								<div class="col-10 col-md-12 suscripcion mt">
+								<div class="col-12 col-md-12 suscripcion mt">
 
 						            <div id="cargador" class="vtn_cargador" style="display:none;">
 						                 <img src="images/cargador.gif" alt="" /> <div id="vtn_texto_cargador">Enviando</div>
@@ -214,11 +214,18 @@
 						                </table>
 						            </div>
 
-									<input type="name" name="nombre_sus" id="nombre_sus" title="Nombre y Apellido" placeholder="Nombre y Apellido" class="col-5 col-sm-12 mr-sm">
-									<div class="col-5 col-sm-12 di">
-										<input type="email" name="email_sus" id="email_sus" title="Email" placeholder="Email" class="">
+									<div class="col-3 col-sm-12 mr-sm">
+										<input type="text" name="nombre_sus" id="nombre_sus" title="Nombre y Apellido" placeholder="Nombre y Apellido">
 									</div>	
-									<a class="pointer" onClick="enviar_sorteo();">Suscribite</a>
+									<div class="col-3 col-sm-12 mr-sm">
+										<input type="text" name="celular_sus" id="celular_sus" title="Celular" placeholder="Celular">
+									</div>	
+									<div class="col-3 col-sm-12">
+										<input type="email" name="email_sus" id="email_sus" title="Email" placeholder="Email">
+									</div>	
+									<div class="col-2 col-sm-12">
+										<a class="pointer" onClick="enviar_sorteo();">Suscribite</a>
+									</div>	
 								</div>
 							</form>
 						</div>
