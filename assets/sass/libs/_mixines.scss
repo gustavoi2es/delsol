@@ -1,0 +1,345 @@
+// MIXINS GENERALES  ///////////////////
+
+// TAMAÑOS DE PANTALLA
+@mixin screen-xlg {
+  @media only screen and (max-width: $screen-xlg) {
+    @content;
+  }
+}
+@mixin screen-lg {
+  @media only screen and (max-width: $screen-lg) {
+    @content;
+  }
+}
+@mixin screen-md {
+  @media only screen and (max-width: $screen-md) {
+    @content;
+  }
+}
+@mixin screen-sm {
+  @media only screen and (max-width: $screen-sm) {
+    @content;
+  }
+}
+@mixin screen-xs {
+  @media only screen and (max-width: $screen-xs) {
+    @content;
+  }
+}
+
+@mixin prefixo($estilo,$propiedad){
+	-webkit-#{$estilo}: $propiedad;
+	-moz-#{$estilo}: $propiedad;
+	-ms-#{$estilo}: $propiedad;
+	#{$estilo}: $propiedad;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin btn($display,$radius,$color,$size,$padding,$background,$border) {
+	display: $display;
+	color: $color;
+	font-size: $size;
+	padding: $padding;
+	background:$background;
+	border:$border;
+	border-radius: $radius;
+	text-decoration: none;
+}
+
+@mixin transition($segundos:.3s,$ease:ease-out,$propiedad:all){
+	transition:$propiedad $segundos $ease;
+	-webkit-transition:$propiedad $segundos $ease;
+	-moz-transition:$propiedad $segundos $ease;
+	-ms-transition:$propiedad $segundos $ease;
+}
+
+@mixin centrarPosicion($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+@mixin tipoDisplay($tipo, $tipoAlign:top) {
+	display:$tipo;
+	
+  @if ($tipo == 'inline-block' or $tipo == 'inline') {
+    vertical-align:$tipoAlign;
+  }
+  
+  // @if ($tipo == 'inline-block' ) { 
+  //   word-spacing:-1px;
+  //   letter-spacing:-1px;
+  //   // margin-bottom:0;
+  // }
+}
+
+// mixin para grosor de tipografia
+@mixin font-weight($weight,$font-weight: true) {
+  $weights: $variantes;
+  
+  $output: $weight;
+  @if map-has-key($weights, $weight) {
+    $output: map-get($weights, $weight);
+  }
+  
+  @if ($font-weight) {
+    font-weight: $output;
+  } @else {
+    font-family: $output;
+  }
+}
+
+@mixin posicionar($position,$top:auto,$der:auto,$bot:auto,$izq:auto) {
+  position: absolute;
+  top: $top;
+  right: $der;
+  bottom: $bot;
+  left: $izq;
+}
+
+@mixin elementoPosicionado($position, $zIndex: null, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  z-index:$zIndex;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin espacioElemento($tipo, $valorTop: null, $valorDer: null, $valorBottom: null, $valorLeft: null) { 	
+	#{$tipo}:$valorTop $valorDer $valorBottom $valorLeft;
+}
+
+@mixin estiloTexto($tamano, $color, $tipo, $grosor) {
+  font-size: $tamano;
+  color:$color;
+  text-transform:$tipo;
+  font-weight:$grosor;
+  line-height:$tamano * 1.4;
+}
+
+@mixin titulo($font-size,$font-weight,$color,$line-height:normal){
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $color;
+  line-height: $line-height;
+}
+
+@mixin menuOculto($opacity:0, $visibility:hidden){
+  position: absolute;
+  opacity: $opacity;
+  visibility: $visibility;
+}
+
+@mixin links($link, $visited, $hover, $active) {
+  & {
+    color: $link;
+    &:visited {
+      color: $visited;
+    }
+    &:hover {
+      color: $hover;
+    }
+    &:active, &:focus {
+      color: $active;
+    }
+  }
+}
+
+@mixin elemento-columna($width,$float){
+  width: $width;
+  float: $float;
+}
+
+@mixin elementosFormularios($padding, $font-size, $borde-color, $radius, $fondo) {
+	width: 100%;
+	padding: $padding;
+	font-size: $font-size;
+	border-radius: $radius;
+	line-height: normal;
+	border: 1px solid $borde-color;
+	background-color: $fondo;
+	@include prefixo(box-sizing, border-box)
+}
+
+@mixin infoPosicionada($contImagen, $contInfo, $anchoContInfo) {
+	.#{$contImagen} {
+		position:relative;
+	}
+
+	.#{$contInfo} {
+		width:100%;
+		max-width:$anchoContInfo;
+		@include centrarPosicion($horizontal: true, $vertical: true);
+	}
+}
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+    opacity: 1;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+    opacity: 1;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
+@mixin color($color, $background: false) {
+  @if $background {
+    background-color: $color;
+  } @else {
+    color: $color;
+  }
+}
+
+@mixin rotar($grados){
+  -ms-transform: rotate($grados);
+  -webkit-transform: rotate($grados);
+  transform: rotate($grados);
+}
+
+@mixin bordes($bgColor, $grueso:1px, $horizontal: true) {
+  border: 0;
+  @if $horizontal {
+    height: $grueso;
+  } @else {
+    width: 1px;
+    height: $grueso;
+  }
+  background: $bgColor;
+}
+
+@mixin box($padding, $color, $grosor:1px) {
+  padding: $padding;
+  border: $grosor solid $color;
+}
+
+@mixin links($link, $visited, $hover, $active) {
+  & {
+    color: $link;
+    &:visited {
+      color: $visited;
+    }
+    &:hover {
+      color: $hover;
+    }
+    &:active, &:focus {
+      color: $active;
+    }
+  }
+}
+
+// DEGRADADOS
+@mixin filter-gradient($deg1, $deg2) {
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$deg1, endColorstr=$deg2, GradientType=1 );
+}
+@mixin background-image($deg1, $deg2, $angulo:45deg) {
+background: $deg1;
+background-color: $deg1;
+background: -moz-linear-gradient($angulo, $deg1 0%, $deg2 100%);
+background: -webkit-gradient(left bottom, right top, color-stop(0%, $deg1), color-stop(100%, $deg2));
+background: -webkit-linear-gradient($angulo, $deg1 0%, $deg2 100%);
+background: -o-linear-gradient($angulo, $deg1 0%, $deg2 100%);
+background: -ms-linear-gradient($angulo, $deg1 0%, $deg2 100%);
+background: linear-gradient($angulo, $deg1 0%, $deg2 100%);
+}
+
+
+// COLORES GENERALES
+@mixin generalColores($colorActual) {
+  @each $nombre-color, $color in $colorActual {
+    .color-#{$nombre-color}, a.color-#{$nombre-color} {@include color($color);}
+    .link-#{$nombre-color}:hover {@include color($color);}
+    .focus-#{$nombre-color}:focus {@include color($color);}
+    .bg-#{$nombre-color} {@include color($color,true);}
+    .bg-#{$nombre-color}-hover:hover {@include color($color,true);}
+    hr.linea-#{$nombre-color} {@include bordes($color);}
+    .borde-#{$nombre-color} {border: 1px solid $color;}
+    .borde-#{$nombre-color}-hover:hover {border: 1px solid $color;}
+    .bt-#{$nombre-color} {border-top: 1px solid $color;}
+    .bl-#{$nombre-color} {border-left: 1px solid $color;}
+    .br-#{$nombre-color} {border-right: 1px solid $color;}
+    .bb-#{$nombre-color} {border-bottom: 1px solid $color;}
+    .borde-img-#{$nombre-color} img {border: 1px solid $color;}
+  }
+}
+
+// TAMAÑOS DE TEXTO
+@mixin generalTextos($tamanio) {
+  @each $tipo-texto, $texto in $tamanio {
+    .#{$tipo-texto} {font-size: $texto;}
+  }
+  @each $tipo-texto, $texto in $tamanio {
+    @include screen-xlg {
+      .#{$tipo-texto}-xlg {font-size: $texto;}
+    }
+  }
+  @each $tipo-texto, $texto in $tamanio {
+    @include screen-lg {
+      .#{$tipo-texto}-lg {font-size: $texto;}
+    }
+  }
+  @each $tipo-texto, $texto in $tamanio {
+    @include screen-md {
+      .#{$tipo-texto}-md {font-size: $texto;}
+    }
+  }
+  @each $tipo-texto, $texto in $tamanio {
+    @include screen-sm {
+      .#{$tipo-texto}-sm {font-size: $texto;}
+    }
+  }
+  @each $tipo-texto, $texto in $tamanio {
+    @include screen-xs {
+      .#{$tipo-texto}-xs {font-size: $texto;}
+    }
+  }
+}
+
+@mixin fuentesVariantes($variantes) {
+  @each $nombre-variante, $variante in $variantes {
+    .#{$nombre-variante} {@include font-weight($variante);}
+  }
+}
+
+@mixin fuentesFamilias($familias) {
+  @each $nombre-familia, $familia in $familias {
+    .#{$nombre-familia} {font-family:$familia;}
+  }
+}

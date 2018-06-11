@@ -1,0 +1,231 @@
+// FUENTES
+$fontFamily: 'Work Sans', sans-serif;
+$fontFamily2: 'Lora', serif;
+$light: 300;
+$regular: 400;
+$medium: 700;
+$bold: 900; 
+
+// GENERAR VARIANTE DE FAMILIA
+$familias: (
+  familia1: $fontFamily,
+  familia2: $fontFamily2,
+);
+
+// GENERAR VARIANTE DE TEXTO
+$variantes: (
+  light: $light,
+  regular: $regular,
+  medium: $medium,
+  bold: $bold,
+);
+
+// CONTENEDORES
+$totalColumnas: 12;
+$anchoContenedor: 1280px;
+
+// COLORES
+$colorPrimario: #877A4C;
+$colorPrimarioObscuro: #faf2f0; 
+$colorPrimarioClaro: #eb1c23;
+$colorSecundario: #565656;
+$colorSecundarioObscuro: darken($colorSecundario, 35%);
+$colorSecundarioClaro: lighten($colorSecundario, 20%);
+$colorTerciario: #ff0d19;
+$colorTerciarioObscuro: darken($colorTerciario, 5%);
+$colorTerciarioClaro: lighten($colorTerciario, 15%);
+$colorDestacado: #A49E3C;
+$colorDestacadoObscuro: darken($colorDestacado, 10%);
+$colorDestacadoClaro: lighten($colorDestacado, 25%);
+$colorBlanco: #ffffff;
+$colorNegro: #000000;
+$colorNegroClaro: #545152;
+$colorNegroObscuro: #333333;
+$colorGris: #e6e6e6;
+$colorGrisObscuro: #626262;
+$colorGrisClaro: #f7f7f7; // borde de campos
+$colorGrisAlterno: #f4f3ee;
+
+// OTROS COLORES
+$colorPrimarioAlterno: #005aa8;
+
+$colorNaranja: #ff6633;
+$colorNaranjaClaro: lighten($colorNaranja, 25%);
+$colorNaranjaObscuro: #cc6633;
+
+$colorRojo: #fe0000;
+$colorRojoClaro: lighten($colorRojo, 25%);
+$colorRojoObscuro: darken($colorRojo, 10%);
+
+// BOTONES
+$bordeRadio: 4px;
+
+// ESPACIOS
+$espacio: 20px;
+$espacioMini: $espacio*0.25; //5px - xs
+$espacioChico: $espacio*0.5; //10px - sm
+$espacioMedio: $espacio*0.75; //15px - md
+$espacioGrande: $espacio*1.25; //25px - lg
+$espacioMuyGrande: $espacio*2.5; //50px - xl
+$espacioExtra: $espacio*5; //100px - xxl
+
+// TEXTOS
+$textoBase: 10px; // base
+$textoMini: 13px; // xs
+$textoChico: 12px; // sm
+$textoMedio: 15px; // md
+$textoGrande: 16px; // lg
+$textoExtra: 17px; // xl
+
+// TITULOS
+$tituloMini: 21px; // xs
+$tituloChico: 24px; // sm
+$tituloMedio: 26px; // md
+$tituloMedioGrande: 32px; // mdx
+$tituloGrande: 36px; // lg
+$tituloExtra: 60px; // xl
+
+$tituloExtraGrande: 55px; // xxl
+
+
+// QUERYES
+$screen-xlg: $anchoContenedor;
+$screen-lg: 1100px;
+$screen-md: 1024px;
+$screen-sm: 768px;
+$screen-xs: 480px;
+
+// VARIOS
+// $anchoBuscador: 230px;
+$altoCampoFormulario: 49px;
+$anchoLineTitulo: 134px;
+
+
+// GENERADOR DE COLORES
+$colores: (
+  primario: $colorPrimario,
+  primario-alterno: $colorPrimarioAlterno,
+  secundario: $colorSecundario,
+  terciario: $colorTerciario,
+  destacado: $colorDestacado,
+  blanco: $colorBlanco,
+  negro: $colorNegro,
+  gris: $colorGris,
+  gris-alterno: $colorGrisAlterno,
+  naranja: $colorNaranja,
+  rojo: $colorRojo
+);
+$colores-claros: (
+  primario-claro: $colorPrimarioClaro,
+  secundario-claro: $colorSecundarioClaro,
+  terciario-claro: $colorTerciarioClaro,
+  destacado-claro: $colorDestacadoClaro,
+  negro-claro: $colorNegroClaro,
+  gris-claro: $colorGrisClaro,
+  naranja-claro: $colorNaranjaClaro,
+  rojo-claro: $colorRojoClaro
+);
+$colores-obscuros: (
+  primario-obscuro: $colorPrimarioObscuro,
+  secundario-obscuro: $colorSecundarioObscuro,
+  terciario-obscuro: $colorTerciarioObscuro,
+  destacado-obscuro: $colorDestacadoObscuro,
+  negro-obscuro: $colorNegroObscuro,
+  gris-obscuro: $colorGrisObscuro,
+  naranja-obscuro: $colorNaranjaObscuro,
+  rojo-obscuro: $colorRojoObscuro
+);
+
+$coloresGenerales: ($colores,$colores-claros,$colores-obscuros);
+
+// GENERAR TAMAÑOS DE TEXTO
+$tamanios: (
+	texto-base:$textoBase,
+	texto-xs:$textoMini,
+	texto-sm:$textoChico,
+	texto-md:$textoMedio,
+	texto-lg:$textoGrande,
+	texto-xl:$textoExtra,
+	titulo-xs: $tituloMini,
+	titulo-sm: $tituloChico,
+  titulo-md: $tituloMedio,
+	titulo-mdx: $tituloMedioGrande,
+	titulo-lg: $tituloGrande,
+  titulo-xl: $tituloExtra,
+	titulo-xxl: $tituloExtraGrande
+);
+
+$anchoBuscador: 230px;
+$altoCampoFormulario: 50px;
+$anchoLogo: 200px;
+
+// FUENTES - ICONOS
+$icomoon-font-path: "../fonts" !default;
+
+$icon-map-marker: "\e90a";  
+$icon-map-marker2: "\e927"; 
+$icon-contacto: "\e930";
+$icon-fb: "\e938";
+$icon-insta: "\e939";
+$icon-link: "\e93c";
+$icon-long-arrow-pointing-to-the-right: "\e93d";
+$icon-menu-button: "\e93e";
+$icon-navigation: "\e93f";
+$icon-smartphone-call: "\e940";
+$icon-tw: "\e941";
+$icon-consultar2: "\e93b";
+$icon-bolsacompra: "\e902";
+$icon-cerrarbanner: "\e906";
+$icon-confirmar: "\e907";
+$icon-decorado: "\e92a";
+$icon-descargar: "\e92d";
+$icon-flechamenu: "\e935";
+$icon-flecharel: "\e936";
+$icon-lapizeditar: "\e937";
+$icon-whatsapp-logo: "\e93a";
+$icon-buscador: "\e901";
+$icon-contacto22: "\e903";
+$icon-descargas: "\e909";
+$icon-flechabot: "\e90e";
+$icon-flechader3: "\e916";
+$icon-flechader2: "\e91e";
+$icon-flechaizq2: "\e91f";
+$icon-flechatop: "\e921";
+$icon-ok2: "\e929";
+$icon-ubicacion: "\e933";
+$icon-youtube: "\e934";
+$icon-whatsapp: "\e900";
+$icon-contacto2: "\e91c";
+$icon-editar: "\e928";
+$icon-flecha_der: "\e92b";
+$icon-flecha_izq: "\e92c";
+$icon-horario: "\e92e";
+$icon-info2: "\e92f";
+$icon-login2: "\e931";
+$icon-newsletter: "\e932";
+$icon-sliderder: "\e925";
+$icon-sliderizq: "\e926";
+$icon-eliminar: "\e908";
+$icon-flechader: "\e91b";
+$icon-flechaizq: "\e920";
+$icon-ok: "\e922";
+$icon-place: "\e923";
+$icon-tel: "\e924";
+$icon-menu: "\e913";
+$icon-tel_cabezal: "\e905";
+$icon-descargar2: "\e91d";
+$icon-consultar: "\e904";
+$icon-actualizar: "\e90d";
+$icon-consulta: "\e912";
+$icon-foto: "\e911";
+$icon-indice: "\e919";
+$icon-info: "\e917";
+$icon-links: "\e91a";
+$icon-menu2: "\e918";
+$icon-relacionados: "\e90f";
+$icon-slider-der: "\e914";
+$icon-slider-izq: "\e915";
+$icon-video: "\e910";
+$icon-vinieta-01: "\e90b";
+$icon-volver: "\e90c";
+

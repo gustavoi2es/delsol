@@ -1,0 +1,611 @@
+body {
+	font-family: $fontFamily;
+	font-size: $textoBase;
+}
+
+::selection {
+  background: $colorPrimarioClaro;
+  color: $colorBlanco;
+}
+::-moz-selection {
+  background: $colorPrimarioClaro;
+  color: $colorBlanco;
+}
+
+// generador de columnas
+.contenedor {max-width:$anchoContenedor;margin-right: auto;margin-left: auto;}
+.contenedor.contenedor-completo {max-width:100%;overflow: hidden;}
+.contenedor .columnas {margin-left:-1em;margin-right:-1em;}
+@for $i from 1 through $totalColumnas {
+  .col-#{$i} { 
+    width: 100% / $totalColumnas * $i;
+    padding-left:1em;
+    padding-right:1em;
+    margin-right: -6px;
+    // font-size: $textoBase;
+    @include tipoDisplay(inline-block, $tipoAlign:top);
+  }
+}
+
+
+// GENERA COLORES
+@each $contenedorColor in $coloresGenerales {
+  @include generalColores($contenedorColor);
+}
+
+// TAMAÑOS DE TEXTO
+@include generalTextos($tamanios);
+
+// VARIANTES DE TEXTO
+@include fuentesVariantes($variantes);
+
+// VARIANTES DE FAMILIA
+@include fuentesFamilias($familias);
+
+// GENERAL /////////////////////////
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clearfix {display: inline-block;}
+html[xmlns] .clearfix {display: block;}
+* html .clearfix {height: 1%;}
+
+.clean_inline {
+  word-spacing: normal;
+  letter-spacing: normal;
+  margin-bottom:0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.imagenIz {margin-right: 20px;}
+.imagenDer {margin-left: 20px;}
+.imagenCen {margin-bottom: 20px;}
+
+.cont_img img.imagenIz {margin-right:0;}
+
+.display-inline, .di {@include tipoDisplay(inline-block);}
+.flex {@include prefixo(display,flex);}
+.bloque {@include tipoDisplay(block);}
+.pointer {cursor: pointer;}
+.salto {clear: both;}
+.centro-bloque {margin-left: auto;margin-right: auto;}
+.text-center, .t-c {text-align: center;}
+.text-left, .t-l {text-align: left;}
+.text-right, .t-r {text-align: right;}
+.der {float: right;}
+.izq {float: left;}
+.valign-bot {vertical-align: bottom !important;}
+.valign-medio {vertical-align: middle !important;}
+.valign-sub {vertical-align: sub !important;}
+.valign-super {vertical-align: super !important;}
+.valign-top {vertical-align: top !important;}  
+.valign-ini {vertical-align: initial !important;} 
+.valign-text-bottom {vertical-align: text-bottom !important;}
+.fijar {position: fixed;}
+.relative {position: relative;}
+.position {position: absolute;}
+.position-top-right {top: 0;right: 0;}
+.position-top-left {top: 0;left: 0;}
+.position-top-center {top: 50%;}
+.position-top {top: 0;}
+.position-right {right: 0;}
+.position-left {left: 0;}
+.position-bot, .position-bottom {bottom: 0;}
+.position-bot-right, .position-bottom-right {bottom: 0;right: 0;}
+.position-bot-left, .position-bottom-left {bottom: 0;left: 0;}
+.centerCenter {@include centrarPosicion(true,true);}
+.centrarHorizontal {@include centrarPosicion(true,false);}
+.centrarVertical {@include centrarPosicion(false,true);}
+.radius {border-radius: $bordeRadio}
+.radius50 {border-radius: 50%;}
+.centrar {margin: 0 auto;}
+.transition {@include transition(.2s);}
+.break-word {word-wrap: break-word;}
+
+.hidden {display: none;}
+.visible {display: block;}
+.overflow-hidden, .oh {overflow: hidden;}
+.overflow-auto, .oa {overflow: auto;}
+.overflow-auto-y, .oa-y {overflow-y: auto;}
+.overflow-auto-x, .oa-x {overflow-x: auto;}
+
+.rotar-90 {@include rotar(-90deg);}
+.rotar-180 {@include rotar(-180deg);}
+.rotar-270 {@include rotar(-270deg);}
+
+.medio, .mitad {width: 48%;}
+.tercio {width: 32%;}
+.full {width: 100% !important;}
+.full-img img {width: 100%;}
+.z1 {z-index: 1}
+.z3 {z-index: 3}
+.z5 {z-index: 5}
+.z20 {z-index: 20}
+
+
+// RESET LISTADO
+.ul-reset ul { 
+  padding-left: 20px;
+  list-style-type: disc; 
+}
+.ul-reset ol { 
+  list-style-type: decimal; 
+}
+.ul-reset ul li { 
+ list-style-type: disc; 
+ margin-left: 15px; 
+}
+.ul-reset ol li { 
+ list-style-type: decimal;
+ margin-left: 15px; 
+}
+
+// OPACITY TRANSPARENCIAS Y HOVERS
+@for $s from 1 through 10 {
+  .opacity-#{$s}, .opacity-hover-#{$s}:hover {
+    opacity: #{$s / 10};
+  }
+}
+
+.no-margin {margin: 0 !important;}
+.img-spa-0 img {@include espacioElemento(margin,0 !important);}
+
+.spa-xl,.m-xl {@include espacioElemento(margin,$espacioExtra);}
+.spa-lg,.m-lg {@include espacioElemento(margin,$espacioMuyGrande);}
+.spa,.m {@include espacioElemento(margin,$espacioGrande);}
+.spa-md,.m-md {@include espacioElemento(margin,$espacioMedio);}
+.spa-sm,.m-sm {@include espacioElemento(margin,$espacioChico);}
+.spa-xs,.m-xs {@include espacioElemento(margin,$espacioMini);}
+.spa-0,.m-0 {@include espacioElemento(margin,0 !important);}
+
+.spa-top-xl,.mt-xl {@include espacioElemento(margin-top,$espacioExtra);}
+.spa-top-lg,.mt-lg {@include espacioElemento(margin-top,$espacioMuyGrande);}
+.spa-top,.mt {@include espacioElemento(margin-top,$espacioGrande);}
+.spa-top-md,.mt-md {@include espacioElemento(margin-top,$espacioMedio);}
+.spa-top-sm,.mt-sm {@include espacioElemento(margin-top,$espacioChico);}
+.spa-top-xs,.mt-xs {@include espacioElemento(margin-top,$espacioMini);}
+.spa-top-0,.mt-0 {@include espacioElemento(margin-top,0 !important);}
+
+.spa-bot-xl,.mb-xl {@include espacioElemento(margin-bottom,$espacioExtra);}
+.spa-bot-lg,.mb-lg {@include espacioElemento(margin-bottom,$espacioMuyGrande);}
+.spa-bot,.mb {@include espacioElemento(margin-bottom,$espacioGrande);}
+.spa-bot-md,.mb-md {@include espacioElemento(margin-bottom,$espacioMedio);}
+.spa-bot-sm,.mb-sm {@include espacioElemento(margin-bottom,$espacioChico);}
+.spa-bot-xs,.mb-xs {@include espacioElemento(margin-bottom,$espacioMini);}
+.spa-bot-0,.mb-0 {@include espacioElemento(margin-bottom,0 !important);}
+
+.spa-der-xl,.mr-xl {@include espacioElemento(margin-right,$espacioExtra);}
+.spa-der-lg,.mr-lg {@include espacioElemento(margin-right,$espacioMuyGrande);}
+.spa-der,.mr {@include espacioElemento(margin-right,$espacioGrande);}
+.spa-der-md,.mr-md {@include espacioElemento(margin-right,$espacioMedio);}
+.spa-der-sm,.mr-sm {@include espacioElemento(margin-right,$espacioChico);}
+.spa-der-xs,.mr-xs {@include espacioElemento(margin-right,$espacioMini);}
+.spa-der-0,.mr-0 {@include espacioElemento(margin-right,0 !important);}
+
+.spa-izq-xl,.ml-xl {@include espacioElemento(margin-left,$espacioExtra);}
+.spa-izq-lg,.ml-lg {@include espacioElemento(margin-left,$espacioMuyGrande);}
+.spa-izq,.ml {@include espacioElemento(margin-left,$espacioGrande);}
+.spa-izq-md,.ml-md {@include espacioElemento(margin-left,$espacioMedio);}
+.spa-izq-sm,.ml-sm {@include espacioElemento(margin-left,$espacioChico);}
+.spa-izq-xs,.ml-xs {@include espacioElemento(margin-left,$espacioMini);}
+.spa-izq-0,.ml-0 {@include espacioElemento(margin-left,0 !important);}
+
+@media (max-width: $screen-lg) {
+  .spa-lg-xl,.m-lg-xl {@include espacioElemento(margin,$espacioExtra);}
+  .spa-lg-lg,.m-lg-lg {@include espacioElemento(margin,$espacioMuyGrande);}
+  .spa-lg-m,.m-lg-m {@include espacioElemento(margin,$espacioGrande);}
+  .spa-lg-md,.m-lg-md {@include espacioElemento(margin,$espacioMedio);}
+  .spa-lg-sm,.m-lg-sm {@include espacioElemento(margin,$espacioChico);}
+  .spa-lg-xs,.m-lg-xs {@include espacioElemento(margin,$espacioMini);}
+  .spa-lg-0,.m-lg-0 {@include espacioElemento(margin,0 !important);}
+
+  .spa-lg-top-xl,.m-lg-t-xl {@include espacioElemento(margin-top,$espacioExtra);}
+  .spa-lg-top-lg,.m-lg-t-lg {@include espacioElemento(margin-top,$espacioMuyGrande);}
+  .spa-lg-top,.m-lg-t {@include espacioElemento(margin-top,$espacioGrande);}
+  .spa-lg-top-md,.m-lg-t-md {@include espacioElemento(margin-top,$espacioMedio);}
+  .spa-lg-top-sm,.m-lg-t-sm {@include espacioElemento(margin-top,$espacioChico);}
+  .spa-lg-top-xs,.m-lg-t-xs {@include espacioElemento(margin-top,$espacioMini);}
+  .spa-lg-top-0,.m-lg-t-0 {@include espacioElemento(margin-top,0 !important);}
+
+  .spa-lg-bot-xl,.m-lg-b-xl {@include espacioElemento(margin-bottom,$espacioExtra);}
+  .spa-lg-bot-lg,.m-lg-b-lg {@include espacioElemento(margin-bottom,$espacioMuyGrande);}
+  .spa-lg-bot,.m-lg-b {@include espacioElemento(margin-bottom,$espacioGrande);}
+  .spa-lg-bot-md,.m-lg-b-md {@include espacioElemento(margin-bottom,$espacioMedio);}
+  .spa-lg-bot-sm,.m-lg-b-sm {@include espacioElemento(margin-bottom,$espacioChico);}
+  .spa-lg-bot-xs,.m-lg-b-xs {@include espacioElemento(margin-bottom,$espacioMini);}
+  .spa-lg-bot-0,.m-lg-b-0 {@include espacioElemento(margin-bottom,0 !important);}
+
+  .spa-lg-der-xl,.m-lg-r-xl {@include espacioElemento(margin-right,$espacioExtra);}
+  .spa-lg-der-lg,.m-lg-r-lg {@include espacioElemento(margin-right,$espacioMuyGrande);}
+  .spa-lg-der,.m-lg-r {@include espacioElemento(margin-right,$espacioGrande);}
+  .spa-lg-der-md,.m-lg-r-md {@include espacioElemento(margin-right,$espacioMedio);}
+  .spa-lg-der-sm,.m-lg-r-sm {@include espacioElemento(margin-right,$espacioChico);}
+  .spa-lg-der-xs,.m-lg-r-xs {@include espacioElemento(margin-right,$espacioMini);}
+  .spa-lg-der-0,.m-lg-r-0 {@include espacioElemento(margin-right,0 !important);}
+
+  .spa-lg-izq-xl,.m-lg-l-xl {@include espacioElemento(margin-left,$espacioExtra);}
+  .spa-lg-izq-lg,.m-lg-l-lg {@include espacioElemento(margin-left,$espacioMuyGrande);}
+  .spa-lg-izq,.m-lg-l {@include espacioElemento(margin-left,$espacioGrande);}
+  .spa-lg-izq-md,.m-lg-l-md {@include espacioElemento(margin-left,$espacioMedio);}
+  .spa-lg-izq-sm,.m-lg-l-sm {@include espacioElemento(margin-left,$espacioChico);}
+  .spa-lg-izq-xs,.m-lg-l-xs {@include espacioElemento(margin-left,$espacioMini);}
+  .spa-lg-izq-0,.m-lg-l-0 {@include espacioElemento(margin-left,0 !important);}
+}
+
+@media (max-width: $screen-md) {
+  .spa-md-xl,.m-md-xl {@include espacioElemento(margin,$espacioExtra);}
+  .spa-md-lg,.m-md-lg {@include espacioElemento(margin,$espacioMuyGrande);}
+  .spa-md-m,.m-md-m {@include espacioElemento(margin,$espacioGrande);}
+  .spa-md-md,.m-md-md {@include espacioElemento(margin,$espacioMedio);}
+  .spa-md-sm,.m-md-sm {@include espacioElemento(margin,$espacioChico);}
+  .spa-md-xs,.m-md-xs {@include espacioElemento(margin,$espacioMini);}
+  .spa-md-0,.m-md-0 {@include espacioElemento(margin,0 !important);}
+
+  .spa-md-top-xl,.m-md-t-xl {@include espacioElemento(margin-top,$espacioExtra);}
+  .spa-md-top-lg,.m-md-t-lg {@include espacioElemento(margin-top,$espacioMuyGrande);}
+  .spa-md-top,.m-md-t {@include espacioElemento(margin-top,$espacioGrande);}
+  .spa-md-top-md,.m-md-t-md {@include espacioElemento(margin-top,$espacioMedio);}
+  .spa-md-top-sm,.m-md-t-sm {@include espacioElemento(margin-top,$espacioChico);}
+  .spa-md-top-xs,.m-md-t-xs {@include espacioElemento(margin-top,$espacioMini);}
+  .spa-md-top-0,.m-md-t-0 {@include espacioElemento(margin-top,0 !important);}
+
+  .spa-md-bot-xl,.m-md-b-xl {@include espacioElemento(margin-bottom,$espacioExtra);}
+  .spa-md-bot-lg,.m-md-b-lg {@include espacioElemento(margin-bottom,$espacioMuyGrande);}
+  .spa-md-bot,.m-md-b {@include espacioElemento(margin-bottom,$espacioGrande);}
+  .spa-md-bot-md,.m-md-b-md {@include espacioElemento(margin-bottom,$espacioMedio);}
+  .spa-md-bot-sm,.m-md-b-sm {@include espacioElemento(margin-bottom,$espacioChico);}
+  .spa-md-bot-xs,.m-md-b-xs {@include espacioElemento(margin-bottom,$espacioMini);}
+  .spa-md-bot-0,.m-md-b-0 {@include espacioElemento(margin-bottom,0 !important);}
+
+  .spa-md-der-xl,.m-md-r-xl {@include espacioElemento(margin-right,$espacioExtra);}
+  .spa-md-der-lg,.m-md-r-lg {@include espacioElemento(margin-right,$espacioMuyGrande);}
+  .spa-md-der,.m-md-r {@include espacioElemento(margin-right,$espacioGrande);}
+  .spa-md-der-md,.m-md-r-md {@include espacioElemento(margin-right,$espacioMedio);}
+  .spa-md-der-sm,.m-md-r-sm {@include espacioElemento(margin-right,$espacioChico);}
+  .spa-md-der-xs,.m-md-r-xs {@include espacioElemento(margin-right,$espacioMini);}
+  .spa-md-der-0,.m-md-r-0 {@include espacioElemento(margin-right,0 !important);}
+
+  .spa-md-izq-xl,.m-md-l-xl {@include espacioElemento(margin-left,$espacioExtra);}
+  .spa-md-izq-lg,.m-md-l-lg {@include espacioElemento(margin-left,$espacioMuyGrande);}
+  .spa-md-izq,.m-md-l {@include espacioElemento(margin-left,$espacioGrande);}
+  .spa-md-izq-md,.m-md-l-md {@include espacioElemento(margin-left,$espacioMedio);}
+  .spa-md-izq-sm,.m-md-l-sm {@include espacioElemento(margin-left,$espacioChico);}
+  .spa-md-izq-xs,.m-md-l-xs {@include espacioElemento(margin-left,$espacioMini);}
+  .spa-md-izq-0,.m-md-l-0 {@include espacioElemento(margin-left,0 !important);}
+}
+
+@media (max-width: $screen-sm) {
+  .spa-sm-xl,.m-sm-xl {@include espacioElemento(margin,$espacioExtra);}
+  .spa-sm-lg,.m-sm-lg {@include espacioElemento(margin,$espacioMuyGrande);}
+  .spa-sm-m,.m-sm-m {@include espacioElemento(margin,$espacioGrande);}
+  .spa-sm-md,.m-sm-md {@include espacioElemento(margin,$espacioMedio);}
+  .spa-sm-sm,.m-sm-sm {@include espacioElemento(margin,$espacioChico);}
+  .spa-sm-xs,.m-sm-xs {@include espacioElemento(margin,$espacioMini);}
+  .spa-sm-0,.m-sm-0 {@include espacioElemento(margin,0 !important);}
+
+  .spa-sm-top-xl,.m-sm-t-xl {@include espacioElemento(margin-top,$espacioExtra);}
+  .spa-sm-top-lg,.m-sm-t-lg {@include espacioElemento(margin-top,$espacioMuyGrande);}
+  .spa-sm-top,.m-sm-t {@include espacioElemento(margin-top,$espacioGrande);}
+  .spa-sm-top-md,.m-sm-t-md {@include espacioElemento(margin-top,$espacioMedio);}
+  .spa-sm-top-sm,.m-sm-t-sm {@include espacioElemento(margin-top,$espacioChico);}
+  .spa-sm-top-xs,.m-sm-t-xs {@include espacioElemento(margin-top,$espacioMini);}
+  .spa-sm-top-0,.m-sm-t-0 {@include espacioElemento(margin-top,0 !important);}
+
+  .spa-sm-bot-xl,.m-sm-b-xl {@include espacioElemento(margin-bottom,$espacioExtra);}
+  .spa-sm-bot-lg,.m-sm-b-lg {@include espacioElemento(margin-bottom,$espacioMuyGrande);}
+  .spa-sm-bot,.m-sm-b {@include espacioElemento(margin-bottom,$espacioGrande);}
+  .spa-sm-bot-md,.m-sm-b-md {@include espacioElemento(margin-bottom,$espacioMedio);}
+  .spa-sm-bot-sm,.m-sm-b-sm {@include espacioElemento(margin-bottom,$espacioChico);}
+  .spa-sm-bot-xs,.m-sm-b-xs {@include espacioElemento(margin-bottom,$espacioMini);}
+  .spa-sm-bot-0,.m-sm-b-0 {@include espacioElemento(margin-bottom,0 !important);}
+
+  .spa-sm-der-xl,.m-sm-r-xl {@include espacioElemento(margin-right,$espacioExtra);}
+  .spa-sm-der-lg,.m-sm-r-lg {@include espacioElemento(margin-right,$espacioMuyGrande);}
+  .spa-sm-der,.m-sm-r {@include espacioElemento(margin-right,$espacioGrande);}
+  .spa-sm-der-md,.m-sm-r-md {@include espacioElemento(margin-right,$espacioMedio);}
+  .spa-sm-der-sm,.m-sm-r-sm {@include espacioElemento(margin-right,$espacioChico);}
+  .spa-sm-der-xs,.m-sm-r-xs {@include espacioElemento(margin-right,$espacioMini);}
+  .spa-sm-der-0,.m-sm-r-0 {@include espacioElemento(margin-right,0 !important);}
+
+  .spa-sm-izq-xl,.m-sm-l-xl {@include espacioElemento(margin-left,$espacioExtra);}
+  .spa-sm-izq-lg,.m-sm-l-lg {@include espacioElemento(margin-left,$espacioMuyGrande);}
+  .spa-sm-izq,.m-sm-l {@include espacioElemento(margin-left,$espacioGrande);}
+  .spa-sm-izq-md,.m-sm-l-md {@include espacioElemento(margin-left,$espacioMedio);}
+  .spa-sm-izq-sm,.m-sm-l-sm {@include espacioElemento(margin-left,$espacioChico);}
+  .spa-sm-izq-xs,.m-sm-l-xs {@include espacioElemento(margin-left,$espacioMini);}
+  .spa-sm-izq-0,.m-sm-l-0 {@include espacioElemento(margin-left,0 !important);}
+}
+
+@media (max-width: $screen-xs) {
+  .spa-xs-xl,.m-xs-xl {@include espacioElemento(margin,$espacioExtra);}
+  .spa-xs-lg,.m-xs-lg {@include espacioElemento(margin,$espacioMuyGrande);}
+  .spa-xs-m,.m-xs-m {@include espacioElemento(margin,$espacioGrande);}
+  .spa-xs-md,.m-xs-md {@include espacioElemento(margin,$espacioMedio);}
+  .spa-xs-sm,.m-xs-sm {@include espacioElemento(margin,$espacioChico);}
+  .spa-xs-xs,.m-xs-xs {@include espacioElemento(margin,$espacioMini);}
+  .spa-xs-0,.m-xs-0 {@include espacioElemento(margin,0 !important);}
+
+  .spa-xs-top-xl,.m-xs-t-xl {@include espacioElemento(margin-top,$espacioExtra);}
+  .spa-xs-top-lg,.m-xs-t-lg {@include espacioElemento(margin-top,$espacioMuyGrande);}
+  .spa-xs-top,.m-xs-t {@include espacioElemento(margin-top,$espacioGrande);}
+  .spa-xs-top-md,.m-xs-t-md {@include espacioElemento(margin-top,$espacioMedio);}
+  .spa-xs-top-sm,.m-xs-t-sm {@include espacioElemento(margin-top,$espacioChico);}
+  .spa-xs-top-xs,.m-xs-t-xs {@include espacioElemento(margin-top,$espacioMini);}
+  .spa-xs-top-0,.m-xs-t-0 {@include espacioElemento(margin-top,0 !important);}
+
+  .spa-xs-bot-xl,.m-xs-b-xl {@include espacioElemento(margin-bottom,$espacioExtra);}
+  .spa-xs-bot-lg,.m-xs-b-lg {@include espacioElemento(margin-bottom,$espacioMuyGrande);}
+  .spa-xs-bot,.m-xs-b {@include espacioElemento(margin-bottom,$espacioGrande);}
+  .spa-xs-bot-md,.m-xs-b-md {@include espacioElemento(margin-bottom,$espacioMedio);}
+  .spa-xs-bot-sm,.m-xs-b-sm {@include espacioElemento(margin-bottom,$espacioChico);}
+  .spa-xs-bot-xs,.m-xs-b-xs {@include espacioElemento(margin-bottom,$espacioMini);}
+  .spa-xs-bot-0,.m-xs-b-0 {@include espacioElemento(margin-bottom,0 !important);}
+
+  .spa-xs-der-xl,.m-xs-r-xl {@include espacioElemento(margin-right,$espacioExtra);}
+  .spa-xs-der-lg,.m-xs-r-lg {@include espacioElemento(margin-right,$espacioMuyGrande);}
+  .spa-xs-der,.m-xs-r {@include espacioElemento(margin-right,$espacioGrande);}
+  .spa-xs-der-md,.m-xs-r-md {@include espacioElemento(margin-right,$espacioMedio);}
+  .spa-xs-der-sm,.m-xs-r-sm {@include espacioElemento(margin-right,$espacioChico);}
+  .spa-xs-der-xs,.m-xs-r-xs {@include espacioElemento(margin-right,$espacioMini);}
+  .spa-xs-der-0,.m-xs-r-0 {@include espacioElemento(margin-right,0 !important);}
+
+  .spa-xs-izq-xl,.m-xs-l-xl {@include espacioElemento(margin-left,$espacioExtra);}
+  .spa-xs-izq-lg,.m-xs-l-lg {@include espacioElemento(margin-left,$espacioMuyGrande);}
+  .spa-xs-izq,.m-xs-l {@include espacioElemento(margin-left,$espacioGrande);}
+  .spa-xs-izq-md,.m-xs-l-md {@include espacioElemento(margin-left,$espacioMedio);}
+  .spa-xs-izq-sm,.m-xs-l-sm {@include espacioElemento(margin-left,$espacioChico);}
+  .spa-xs-izq-xs,.m-xs-l-xs {@include espacioElemento(margin-left,$espacioMini);}
+  .spa-xs-izq-0,.m-xs-l-0 {@include espacioElemento(margin-left,0 !important);}
+}
+
+.padding-xxl,.p-xxl {@include espacioElemento(padding,$espacioExtra);}
+.padding-xl,.p-xl {@include espacioElemento(padding,$espacioMuyGrande);}
+.padding-lg,.p-lg {@include espacioElemento(padding,$espacioGrande);}
+.padding-md,.p-md {@include espacioElemento(padding,$espacioMedio);}
+.padding,.p {@include espacioElemento(padding,$espacio);}
+.padding-sm,.p-sm {@include espacioElemento(padding,$espacioChico);}
+.padding-xs,.p-xs {@include espacioElemento(padding,$espacioMini);}
+
+.padding-bot-xxl,.pb-xxl {@include espacioElemento(padding-bottom,$espacioExtra);}
+.padding-bot-xl,.pb-xl {@include espacioElemento(padding-bottom,$espacioMuyGrande);}
+.padding-bot-lg,.pb-lg {@include espacioElemento(padding-bottom,$espacioGrande);}
+.padding-bot-md,.pb-md {@include espacioElemento(padding-bottom,$espacioMedio);}
+.padding-bot,.pb {@include espacioElemento(padding-bottom,$espacio);}
+.padding-bot-sm,.pb-sm {@include espacioElemento(padding-bottom,$espacioChico);}
+.padding-bot-xs,.pb-xs {@include espacioElemento(padding-bottom,$espacioMini);}
+
+.padding-der-xxl,.pr-xxl {@include espacioElemento(padding-right,$espacioExtra);}
+.padding-der-xl,.pr-xl {@include espacioElemento(padding-right,$espacioMuyGrande);}
+.padding-der-lg,.pr-lg {@include espacioElemento(padding-right,$espacioGrande);}
+.padding-der-md,.pr-md {@include espacioElemento(padding-right,$espacioMedio);}
+.padding-der,.pr {@include espacioElemento(padding-right,$espacio);}
+.padding-der-sm,.pr-sm {@include espacioElemento(padding-right,$espacioChico);}
+.padding-der-xs,.pr-xs {@include espacioElemento(padding-right,$espacioMini);}
+
+.padding-izq-xxl,.pl-xxl {@include espacioElemento(padding-left,$espacioExtra);}
+.padding-izq-xl,.pl-xl {@include espacioElemento(padding-left,$espacioMuyGrande);}
+.padding-izq-lg,.pl-lg {@include espacioElemento(padding-left,$espacioGrande);}
+.padding-izq-md,.pl-md {@include espacioElemento(padding-left,$espacioMedio);}
+.padding-izq,.pl {@include espacioElemento(padding-left,$espacio);}
+.padding-izq-sm,.pl-sm {@include espacioElemento(padding-left,$espacioChico);}
+.padding-izq-xs,.pl-xs {@include espacioElemento(padding-left,$espacioMini);}
+
+.padding-top-xxl,.pt-xxl {@include espacioElemento(padding-top,$espacioExtra);}
+.padding-top-xl,.pt-xl {@include espacioElemento(padding-top,$espacioMuyGrande);}
+.padding-top-lg,.pt-lg {@include espacioElemento(padding-top,$espacioGrande);}
+.padding-top-md,.pt-md {@include espacioElemento(padding-top,$espacioMedio);}
+.padding-top,.pt {@include espacioElemento(padding-top,$espacio);}
+.padding-top-sm,.pt-sm {@include espacioElemento(padding-top,$espacioChico);}
+.padding-top-xs,.pt-xs {@include espacioElemento(padding-top,$espacioMini);}
+
+.padding-0,.p-0 {@include espacioElemento(padding,0 !important);}
+.padding-top-0,.pt-0 {@include espacioElemento(padding-top,0 !important);}
+.padding-izq-0,.pl-0 {@include espacioElemento(padding-left,0 !important);}
+.padding-der-0,.pr-0 {@include espacioElemento(padding-right,0 !important);}
+.padding-bot-0,.pb-0 {@include espacioElemento(padding-bottom,0 !important);}
+
+@media (max-width: $screen-lg) {
+  .padding-lg-xl,.p-lg-xl {@include espacioElemento(padding,$espacioExtra);}
+  .padding-lg-lg,.p-lg-lg {@include espacioElemento(padding,$espacioMuyGrande);}
+  .padding-lg-.p-lg-t {@include espacioElemento(padding,$espacioGrande);}
+  .padding-lg-sm,.p-lg-md {@include espacioElemento(padding,$espacioMedio);}
+  .padding-lg-sm,.p-lg-sm {@include espacioElemento(padding,$espacioChico);}
+  .padding-lg-xs,.p-lg-xs {@include espacioElemento(padding,$espacioMini);}
+  .padding-lg-0,.p-lg-0 {@include espacioElemento(padding,0 !important);}
+
+  .padding-lg-top-xl,.p-lg-t-xl {@include espacioElemento(padding-top,$espacioExtra);}
+  .padding-lg-top-lg,.p-lg-t-lg {@include espacioElemento(padding-top,$espacioMuyGrande);}
+  .padding-lg-top,.p-lg-t {@include espacioElemento(padding-top,$espacioGrande);}
+  .padding-lg-top-lg,.p-lg-t-md {@include espacioElemento(padding-top,$espacioMedio);}
+  .padding-lg-top-sm,.p-lg-t-sm {@include espacioElemento(padding-top,$espacioChico);}
+  .padding-lg-top-xs,.p-lg-t-xs {@include espacioElemento(padding-top,$espacioMini);}
+  .padding-lg-top-0,.p-lg-t-0 {@include espacioElemento(padding-top,0 !important);}
+
+  .padding-lg-bot-xl,.p-lg-b-xl {@include espacioElemento(padding-bottom,$espacioExtra);}
+  .padding-lg-bot-lg,.p-lg-b-lg {@include espacioElemento(padding-bottom,$espacioMuyGrande);}
+  .padding-lg-bot,.p-lg-b {@include espacioElemento(padding-bottom,$espacioGrande);}
+  .padding-lg-bot-md,.p-lg-b-md {@include espacioElemento(padding-bottom,$espacioMedio);}
+  .padding-lg-bot-sm,.p-lg-b-sm {@include espacioElemento(padding-bottom,$espacioChico);}
+  .padding-lg-bot-xs,.p-lg-b-xs {@include espacioElemento(padding-bottom,$espacioMini);}
+  .padding-lg-bot-0,.p-lg-b-0 {@include espacioElemento(padding-bottom,0 !important);}
+
+  .padding-lg-der-xl,.p-lg-r-xl {@include espacioElemento(padding-right,$espacioExtra);}
+  .padding-lg-der-lg,.p-lg-r-lg {@include espacioElemento(padding-right,$espacioMuyGrande);}
+  .padding-lg-der,.p-lg-r {@include espacioElemento(padding-right,$espacioGrande);}
+  .padding-lg-der-md,.p-lg-r-md {@include espacioElemento(padding-right,$espacioMedio);}
+  .padding-lg-der-sm,.p-lg-r-sm {@include espacioElemento(padding-right,$espacioChico);}
+  .padding-lg-der-xs,.p-lg-r-xs {@include espacioElemento(padding-right,$espacioMini);}
+  .padding-lg-der-0,.p-lg-r-0 {@include espacioElemento(padding-right,0 !important);}
+
+  .padding-lg-izq-xl,.p-lg-l-xl {@include espacioElemento(padding-left,$espacioExtra);}
+  .padding-lg-izq-lg,.p-lg-l-lg {@include espacioElemento(padding-left,$espacioMuyGrande);}
+  .padding-lg-izq,.p-lg-l {@include espacioElemento(padding-left,$espacioGrande);}
+  .padding-lg-izq-md,.p-lg-l-md {@include espacioElemento(padding-left,$espacioMedio);}
+  .padding-lg-izq-sm,.p-lg-l-sm {@include espacioElemento(padding-left,$espacioChico);}
+  .padding-lg-izq-xs,.p-lg-l-xs {@include espacioElemento(padding-left,$espacioMini);}
+  .padding-lg-izq-0,.p-lg-l-0 {@include espacioElemento(padding-left,0 !important);}
+}
+
+@media (max-width: $screen-md) {
+  .padding-md-xl,.p-md-xl {@include espacioElemento(padding,$espacioExtra);}
+  .padding-md-lg,.p-md-lg {@include espacioElemento(padding,$espacioMuyGrande);}
+  .padding-md-.p-md-t {@include espacioElemento(padding,$espacioGrande);}
+  .padding-md-sm,.p-md-md {@include espacioElemento(padding,$espacioMedio);}
+  .padding-md-sm,.p-md-sm {@include espacioElemento(padding,$espacioChico);}
+  .padding-md-xs,.p-md-xs {@include espacioElemento(padding,$espacioMini);}
+  .padding-md-0,.p-md-0 {@include espacioElemento(padding,0 !important);}
+
+  .padding-md-top-xl,.p-md-t-xl {@include espacioElemento(padding-top,$espacioExtra);}
+  .padding-md-top-lg,.p-md-t-lg {@include espacioElemento(padding-top,$espacioMuyGrande);}
+  .padding-md-top,.p-md-t {@include espacioElemento(padding-top,$espacioGrande);}
+  .padding-md-top-md,.p-md-t-md {@include espacioElemento(padding-top,$espacioMedio);}
+  .padding-md-top-sm,.p-md-t-sm {@include espacioElemento(padding-top,$espacioChico);}
+  .padding-md-top-xs,.p-md-t-xs {@include espacioElemento(padding-top,$espacioMini);}
+  .padding-md-top-0,.p-md-t-0 {@include espacioElemento(padding-top,0 !important);}
+
+  .padding-md-bot-xl,.p-md-b-xl {@include espacioElemento(padding-bottom,$espacioExtra);}
+  .padding-md-bot-lg,.p-md-b-lg {@include espacioElemento(padding-bottom,$espacioMuyGrande);}
+  .padding-md-bot,.p-md-b {@include espacioElemento(padding-bottom,$espacioGrande);}
+  .padding-md-bot-md,.p-md-b-md {@include espacioElemento(padding-bottom,$espacioMedio);}
+  .padding-md-bot-sm,.p-md-b-sm {@include espacioElemento(padding-bottom,$espacioChico);}
+  .padding-md-bot-xs,.p-md-b-xs {@include espacioElemento(padding-bottom,$espacioMini);}
+  .padding-md-bot-0,.p-md-b-0 {@include espacioElemento(padding-bottom,0 !important);}
+
+  .padding-md-der-xl,.p-md-r-xl {@include espacioElemento(padding-right,$espacioExtra);}
+  .padding-md-der-lg,.p-md-r-lg {@include espacioElemento(padding-right,$espacioMuyGrande);}
+  .padding-md-der,.p-md-r {@include espacioElemento(padding-right,$espacioGrande);}
+  .padding-md-der-md,.p-md-r-md {@include espacioElemento(padding-right,$espacioMedio);}
+  .padding-md-der-sm,.p-md-r-sm {@include espacioElemento(padding-right,$espacioChico);}
+  .padding-md-der-xs,.p-md-r-xs {@include espacioElemento(padding-right,$espacioMini);}
+  .padding-md-der-0,.p-md-r-0 {@include espacioElemento(padding-right,0 !important);}
+
+  .padding-md-izq-xl,.p-md-l-xl {@include espacioElemento(padding-left,$espacioExtra);}
+  .padding-md-izq-lg,.p-md-l-lg {@include espacioElemento(padding-left,$espacioMuyGrande);}
+  .padding-md-izq,.p-md-l {@include espacioElemento(padding-left,$espacioGrande);}
+  .padding-md-izq-md,.p-md-l-md {@include espacioElemento(padding-left,$espacioMedio);}
+  .padding-md-izq-sm,.p-md-l-sm {@include espacioElemento(padding-left,$espacioChico);}
+  .padding-md-izq-xs,.p-md-l-xs {@include espacioElemento(padding-left,$espacioMini);}
+  .padding-md-izq-0,.p-md-l-0 {@include espacioElemento(padding-left,0 !important);}
+}
+
+@media (max-width: $screen-sm) {
+  .padding-sm-xl,.p-sm-xl {@include espacioElemento(padding,$espacioExtra);}
+  .padding-sm-lg,.p-sm-lg {@include espacioElemento(padding,$espacioMuyGrande);}
+  .padding-sm-.p-sm-t {@include espacioElemento(padding,$espacioGrande);}
+  .padding-sm-sm,.p-sm-md {@include espacioElemento(padding,$espacioMedio);}
+  .padding-sm-sm,.p-sm-sm {@include espacioElemento(padding,$espacioChico);}
+  .padding-sm-xs,.p-sm-xs {@include espacioElemento(padding,$espacioMini);}
+  .padding-sm-0,.p-sm-0 {@include espacioElemento(padding,0 !important);}
+
+  .padding-sm-top-xl,.p-sm-t-xl {@include espacioElemento(padding-top,$espacioExtra);}
+  .padding-sm-top-lg,.p-sm-t-lg {@include espacioElemento(padding-top,$espacioMuyGrande);}
+  .padding-sm-top,.p-sm-t {@include espacioElemento(padding-top,$espacioGrande);}
+  .padding-sm-top-sm,.p-sm-t-md {@include espacioElemento(padding-top,$espacioMedio);}
+  .padding-sm-top-sm,.p-sm-t-sm {@include espacioElemento(padding-top,$espacioChico);}
+  .padding-sm-top-xs,.p-sm-t-xs {@include espacioElemento(padding-top,$espacioMini);}
+  .padding-sm-top-0,.p-sm-t-0 {@include espacioElemento(padding-top,0 !important);}
+
+  .padding-sm-bot-xl,.p-sm-b-xl {@include espacioElemento(padding-bottom,$espacioExtra);}
+  .padding-sm-bot-lg,.p-sm-b-lg {@include espacioElemento(padding-bottom,$espacioMuyGrande);}
+  .padding-sm-bot,.p-sm-b {@include espacioElemento(padding-bottom,$espacioGrande);}
+  .padding-sm-bot-md,.p-sm-b-md {@include espacioElemento(padding-bottom,$espacioMedio);}
+  .padding-sm-bot-sm,.p-sm-b-sm {@include espacioElemento(padding-bottom,$espacioChico);}
+  .padding-sm-bot-xs,.p-sm-b-xs {@include espacioElemento(padding-bottom,$espacioMini);}
+  .padding-sm-bot-0,.p-sm-b-0 {@include espacioElemento(padding-bottom,0 !important);}
+
+  .padding-sm-der-xl,.p-sm-r-xl {@include espacioElemento(padding-right,$espacioExtra);}
+  .padding-sm-der-lg,.p-sm-r-lg {@include espacioElemento(padding-right,$espacioMuyGrande);}
+  .padding-sm-der,.p-sm-r {@include espacioElemento(padding-right,$espacioGrande);}
+  .padding-sm-der-md,.p-sm-r-md {@include espacioElemento(padding-right,$espacioMedio);}
+  .padding-sm-der-sm,.p-sm-r-sm {@include espacioElemento(padding-right,$espacioChico);}
+  .padding-sm-der-xs,.p-sm-r-xs {@include espacioElemento(padding-right,$espacioMini);}
+  .padding-sm-der-0,.p-sm-r-0 {@include espacioElemento(padding-right,0 !important);}
+
+  .padding-sm-izq-xl,.p-sm-l-xl {@include espacioElemento(padding-left,$espacioExtra);}
+  .padding-sm-izq-lg,.p-sm-l-lg {@include espacioElemento(padding-left,$espacioMuyGrande);}
+  .padding-sm-izq,.p-sm-l {@include espacioElemento(padding-left,$espacioGrande);}
+  .padding-sm-izq-md,.p-sm-l-md {@include espacioElemento(padding-left,$espacioMedio);}
+  .padding-sm-izq-sm,.p-sm-l-sm {@include espacioElemento(padding-left,$espacioChico);}
+  .padding-sm-izq-xs,.p-sm-l-xs {@include espacioElemento(padding-left,$espacioMini);}
+  .padding-sm-izq-0,.p-sm-l-0 {@include espacioElemento(padding-left,0 !important);}
+}
+
+@media (max-width: $screen-xs) {
+  .padding-xs-xl,.p-xs-xl {@include espacioElemento(padding,$espacioExtra);}
+  .padding-xs-lg,.p-xs-lg {@include espacioElemento(padding,$espacioMuyGrande);}
+  .padding-xs-.p-xs-t {@include espacioElemento(padding,$espacioGrande);}
+  .padding-xs-sm,.p-xs-md {@include espacioElemento(padding,$espacioMedio);}
+  .padding-xs-sm,.p-xs-sm {@include espacioElemento(padding,$espacioChico);}
+  .padding-xs-xs,.p-xs-xs {@include espacioElemento(padding,$espacioMini);}
+  .padding-xs-0,.p-xs-0 {@include espacioElemento(padding,0 !important);}
+
+  .padding-xs-top-xl,.p-xs-t-xl {@include espacioElemento(padding-top,$espacioExtra);}
+  .padding-xs-top-lg,.p-xs-t-lg {@include espacioElemento(padding-top,$espacioMuyGrande);}
+  .padding-xs-top,.p-xs-t {@include espacioElemento(padding-top,$espacioGrande);}
+  .padding-xs-top-xs,.p-xs-t-md {@include espacioElemento(padding-top,$espacioMedio);}
+  .padding-xs-top-xs,.p-xs-t-sm {@include espacioElemento(padding-top,$espacioChico);}
+  .padding-xs-top-xs,.p-xs-t-xs {@include espacioElemento(padding-top,$espacioMini);}
+  .padding-xs-top-0,.p-xs-t-0 {@include espacioElemento(padding-top,0 !important);}
+
+  .padding-xs-bot-xl,.p-xs-b-xl {@include espacioElemento(padding-bottom,$espacioExtra);}
+  .padding-xs-bot-lg,.p-xs-b-lg {@include espacioElemento(padding-bottom,$espacioMuyGrande);}
+  .padding-xs-bot,.p-xs-b {@include espacioElemento(padding-bottom,$espacioGrande);}
+  .padding-xs-bot-md,.p-xs-b-md {@include espacioElemento(padding-bottom,$espacioMedio);}
+  .padding-xs-bot-sm,.p-xs-b-sm {@include espacioElemento(padding-bottom,$espacioChico);}
+  .padding-xs-bot-xs,.p-xs-b-xs {@include espacioElemento(padding-bottom,$espacioMini);}
+  .padding-xs-bot-0,.p-xs-b-0 {@include espacioElemento(padding-bottom,0 !important);}
+
+  .padding-xs-der-xl,.p-xs-r-xl {@include espacioElemento(padding-right,$espacioExtra);}
+  .padding-xs-der-lg,.p-xs-r-lg {@include espacioElemento(padding-right,$espacioMuyGrande);}
+  .padding-xs-der,.p-xs-r {@include espacioElemento(padding-right,$espacioGrande);}
+  .padding-xs-der-md,.p-xs-r-md {@include espacioElemento(padding-right,$espacioMedio);}
+  .padding-xs-der-sm,.p-xs-r-sm {@include espacioElemento(padding-right,$espacioChico);}
+  .padding-xs-der-xs,.p-xs-r-xs {@include espacioElemento(padding-right,$espacioMini);}
+  .padding-xs-der-0,.p-xs-r-0 {@include espacioElemento(padding-right,0 !important);}
+
+  .padding-xs-izq-xl,.p-xs-l-xl {@include espacioElemento(padding-left,$espacioExtra);}
+  .padding-xs-izq-lg,.p-xs-l-lg {@include espacioElemento(padding-left,$espacioMuyGrande);}
+  .padding-xs-izq,.p-xs-l {@include espacioElemento(padding-left,$espacioGrande);}
+  .padding-xs-izq-md,.p-xs-l-md {@include espacioElemento(padding-left,$espacioMedio);}
+  .padding-xs-izq-sm,.p-xs-l-sm {@include espacioElemento(padding-left,$espacioChico);}
+  .padding-xs-izq-xs,.p-xs-l-xs {@include espacioElemento(padding-left,$espacioMini);}
+  .padding-xs-izq-0,.p-xs-l-0 {@include espacioElemento(padding-left,0 !important);}
+}
+
+/* CENTRAR IMAGENES */
+.centrar_img img, .centrar_img .imagenIz, .centrar_img .imagenDer {
+  margin: 0 auto;
+}
+.centrar_img div[align] {
+  float: none;
+  text-align: center;
+}
+.centrar_img div[align] img {
+  float: none;
+  margin: 0 auto;
+}
+
+/* VIDEOS DE YOUTUBE RESPONSIVOS */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px; 
+  height: 0;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

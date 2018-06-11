@@ -1,0 +1,263 @@
+@media (max-width: $screen-xlg) {
+	@for $i from 1 through $totalColumnas {
+    	.col-xlg-#{$i} {
+    	    width: 100% / $totalColumnas * $i;
+    	    @include tipoDisplay(inline-block, $tipoAlign:top);
+    	}
+	}
+	.flex-off-xlg {@include prefixo(display,block);}
+	.nofloat-xlg {float: none;}
+	.der-xlg {float: right;}
+	.izq-xlg {float: left;}
+
+	.full-xlg {width: 100%;}
+	.full-xlg-i {width: 100% !important;}
+	.full-img-xlg img {width: 100%;}	
+
+	.position-off-xlg {position: static;}
+	.centrarHorizontal-off-xlg, .centrarVertical-off-xlg {position: static;transform: initial;}
+
+	.contenedor.contenedor-xlg-full {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.text-center-xlg {text-align: center;}
+	.text-left-xlg {text-align: left;}
+	.text-right-xlg {text-align: right;}
+	.contenedor {
+		margin-left: 3%;
+		margin-right: 3%;
+	}
+	.contenedor.contenedor-full {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+@media (max-width: $screen-lg) {
+	@for $i from 1 through $totalColumnas {
+    	.col-lg-#{$i} {
+    	    width: 100% / $totalColumnas * $i;
+    	    @include tipoDisplay(inline-block, $tipoAlign:top);
+    	}
+	}
+	.flex-off-lg {@include prefixo(display,block);}
+	.nofloat-lg {float: none;}
+	.der-lg {float: right;}
+	.izq-lg {float: left;}
+
+	.full-lg {width: 100%;}
+	.full-lg-i {width: 100% !important;}
+	.full-img-lg img {width: 100%;}	
+
+	.position-off-lg {position: static;}
+	.centrarHorizontal-off-lg, .centrarVertical-off-lg {position: static;transform: initial;}
+
+	.contenedor.contenedor-lg-full {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.text-center-lg {text-align: center;}
+	.text-left-lg {text-align: left;}
+	.text-right-lg {text-align: right;}
+}
+
+@media (max-width: $screen-md) {	
+	@for $i from 1 through $totalColumnas {
+    	.col-md-#{$i} {
+    	    width: 100% / $totalColumnas * $i;
+    	    // padding-left:1em;
+    	    // padding-right:1em;
+    	    @include tipoDisplay(inline-block, $tipoAlign:top);
+    	}
+	}
+
+	.contenedor.contenedor-md-full {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.text-center-md {text-align: center;}
+	.text-left-md {text-align: left;}
+	.text-right-md {text-align: right;}
+
+	.position-off-md {position: static;}
+	.centrarHorizontal-off-md, .centrarVertical-off-md {position: static;transform: initial;}
+
+	.flex-off-md {@include prefixo(display,block);}
+	.nofloat-md {float: none;}
+	.der-md {float: right;}
+	.izq-md {float: left;}
+
+	.full-md {width: 100%;}
+	.full-md-i {width: 100% !important;}
+	.full-img-md img {width: 100%;}	
+
+	/* CENTRAR IMAGENES */
+	.img-md-spa-0 img {
+		margin: 0;
+	}
+	.centrar-img-md img, 
+	div.centrar-img-md img, 
+	div.centrar-img-md .imagenIz, 
+	div.centrar-img-md .imagenDer {
+		margin: 0 auto;
+		display: block;
+	}
+	.centrar-img-md img[align],
+	div.centrar-img-md img[align] {
+		float: none;
+		text-align: center;
+	}
+	.centrar-img-md img[align],
+	div.centrar-img-md img[align] {
+		float: none;
+		margin: 0 auto;
+		margin-bottom: $espacioMedio;
+	}
+
+}
+
+@media (max-width: $screen-sm) {
+	@for $i from 1 through $totalColumnas {
+    	.col-sm-#{$i} {
+    	    width: 100% / $totalColumnas * $i;
+    	    // padding-left:1em;
+    	    // padding-right:1em;
+    	    @include tipoDisplay(inline-block, $tipoAlign:top);
+    	}
+	}
+
+	.contenedor.contenedor-sm-full {
+		margin-left: 0;
+		margin-right: 0;
+	}	
+
+	/* CENTRAR IMAGENES */
+	.img-sm-spa-0 img {
+		margin: 0;
+	}
+	.centrar-img-sm img, 
+	div.centrar-img-sm img, 
+	div.centrar-img-sm .imagenIz, 
+	div.centrar-img-sm .imagenDer {
+		margin: 0 auto;
+		display: block;
+	}
+	.centrar-img-sm img[align],
+	div.centrar-img-sm img[align] {
+		float: none;
+		text-align: center;
+	}
+	.centrar-img-sm img[align],
+	div.centrar-img-sm img[align] {
+		float: none;
+		margin: 0 auto;
+		margin-bottom: $espacioMedio;
+	}
+
+	.text-center-sm {text-align: center;}
+	.text-left-sm {text-align: left;}
+	.text-right-sm {text-align: right;}
+
+	.position-off-sm {position: static;}
+	.centrarHorizontal-off-sm, .centrarVertical-off-sm {position: static;transform: initial;}
+	
+	.flex-off-sm {@include prefixo(display,block);}
+	.nofloat-sm {float: none;}
+	.der-sm {float: right;}
+	.izq-sm {float: left;}
+
+	.full-sm {width: 100%;}
+	.full-sm-i {width: 100% !important;}
+	.full-img-sm img {width: 100%;}	
+
+	.imagenIz {margin-bottom: $espacio;}
+	.imagenDer {margin-bottom: $espacio;}
+	.quita-spa-img img {margin: 0 !important;}
+}
+
+@media (max-width: $screen-xs) {
+	@for $i from 1 through $totalColumnas {
+    	.col-#{$i} {
+    	    width: 100%;
+    	}
+	}
+	@for $i from 1 through $totalColumnas {
+    	.col-xs-#{$i} {
+    	    width: 100% / $totalColumnas * $i;
+    	    // padding-left:1em;
+    	    // padding-right:1em;
+    	    @include tipoDisplay(inline-block, $tipoAlign:top);
+    	}
+	}
+
+	.contenedor {
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+
+	.contenedor.contenedor-xs-full {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	/* CENTRAR IMAGENES */
+	.img-xs-spa-0 img {
+		margin: 0;
+	}
+	.centrar-img-xs img, 
+	div.centrar-img-xs img, 
+	div.centrar-img-xs .imagenIz, 
+	div.centrar-img-xs .imagenDer {
+		margin: 0 auto;
+		display: block;
+	}
+	.centrar-img-xs img[align],
+	div.centrar-img-xs img[align] {
+		float: none;
+		text-align: center;
+	}
+	.centrar-img-xs img[align],
+	div.centrar-img-xs img[align] {
+		float: none;
+		margin: 0 auto;
+		margin-bottom: $espacioMedio;
+	}
+
+	.medio {float: none;width: 100%;}
+	.text-center-xs {text-align: center;}
+	.text-left-xs {text-align: left;}
+	.text-right-xs {text-align: right;}
+	.visible-in-xs {display: inline-block;}
+	.position-off {position: static;}
+
+	.position-off-xs {position: static;}
+	.centrarHorizontal-off-xs, .centrarVertical-off-xs {position: static;transform: initial;}
+	
+	.flex-off-xs {@include prefixo(display,block);}
+	.nofloat-xs {float: none;}
+	.der-xs {float: right;}
+	.izq-xs {float: left;}
+
+	.full-xs {width: 100%;}
+	.full-xs-i {width: 100% !important;}
+	.full-img-xs img {width: 100%;}	
+
+	.rotar-90-xs {
+		@include rotar(-90deg);
+	}
+
+	img.imagenIz, img.imagenDer {
+		margin: 0 auto;
+		display: block;
+	}
+	img[align].imagenIz, img[align].imagenDer {
+		float: none;
+		text-align: center;
+	}
+	img[align].imagenIz, img[align].imagenDer {
+		float: none;
+		margin: 0 auto;
+		margin-bottom: $espacioMedio;
+	}
+}

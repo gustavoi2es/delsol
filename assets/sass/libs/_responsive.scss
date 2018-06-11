@@ -1,0 +1,217 @@
+@media (max-width: $screen-xlg) {
+	
+	// MENU
+// 	.menu {
+// 		.menu-nivel1 {
+// 			a {
+// 				margin-right: $espacioChico;
+// 				font-size: $textoChico;
+// 			}
+// 		}
+// 	}
+ }
+
+@media (max-width: $screen-lg) {
+	////////////
+	// CABEZAL
+	////////////
+
+	////////////
+	// CUERPO
+	////////////
+
+	////////
+	// PIE
+	////////
+}
+
+@media (max-width: $screen-md) {
+	////////////
+	// CABEZAL
+	////////////
+	.padding-logo {
+		padding-left: 0;
+	}
+	.padding_img_c div img{
+	padding-bottom: 0;
+	}
+
+	.bg-cabezal {
+		height: 100px;
+	}
+	
+	div#cont_menu_a_rsp {
+    	width: 100%;
+    	background: $colorNegro;
+    }
+    .slicknav_menu {
+    	display: block;
+    }
+
+	////////////
+	// CUERPO
+	////////////
+
+	/*////////////////////////////////////////////////////////////////*/
+	/* CONTADOR - CANTIDAD - PRODUCTOS */
+	/*////////////////////////////////////////////////////////////////*/
+	.contador_cantidad input[type="text"].cantidad {
+		width: 100%;
+	}
+	.contador_cantidad {
+		width: 100%;
+		margin: 0;
+	}
+
+	/////////////////////
+
+	/////////////////>
+	// COMPONENTES
+	/////////////////>
+
+	// GALERIA FOTOS
+	.galeria-fotos {
+		background-size: cover;
+		&:hover {
+			background-size: cover;
+		}
+	}
+
+
+	// PORTADA A	
+	.contenedor-slider {
+		padding: 0 3%;
+		margin-top: $espacioMedio;
+	}
+
+	
+	////////
+	// PIE
+	////////
+
+}
+
+@media (max-device-width: $screen-sm) and (orientation : landscape) {
+	// GALERIA FOTOS
+	.galeria-fotos {
+		min-width: auto;
+	}
+}
+
+@media (max-width: $screen-sm) {
+	////////////
+    // TITULOS
+	////////////
+	.titulo-portada {
+		font-size: 1.6em;
+	}
+
+	////////////
+	// CABEZAL
+	////////////
+
+    // MENU - ESCRITORIO
+    .menu-escritorio {
+    	width: 150px !important;
+    	right: -10px;
+    }
+
+	////////////
+	// CUERPO
+	////////////
+
+	/* PORTADA A */
+	div#slides div.slide.corte img {
+		max-width: none;
+		position: absolute;
+		left: 0;
+		left: calc(50% - 960px);
+		top: 0;
+			position: absolute;
+				left: 50%;
+				transform: translate(-50%, 0);
+		height: 400px;
+	}
+	div#slides div.slide.corte {
+		height: 400px;
+		overflow: hidden;
+		position: relative;
+	}
+	
+	// RRHH
+	.img-perfil {margin: 0 auto;}
+
+
+	////////
+	// PIE
+	////////
+	.menu_pie_item {
+		margin: 0 5px;
+		display: inline-block;
+	}
+	.titulo_portada_a{
+		font-size:55px;
+	}
+}
+
+@media (max-device-width: $screen-xs) and (orientation : landscape) {
+	#menu-resp-01 {
+		overflow: auto;
+		height: 220px;
+	}
+}
+
+@media (max-width: $screen-xs) {
+	// CARRITO
+	.precio-tabla {
+		padding-top: 20px;
+	}
+
+	.logo {
+		width: calc(100% - 50px);
+	}
+
+	// PAGINACION
+	ul.pagination li {
+		float: none;
+		display: inline-block;
+	}
+	ul.pagination li a {
+		margin: 0 5px;
+	}
+
+	// PRESENTACION
+	.slide_contenido {
+		font-size: 80%;
+	}
+
+	// GALERIA FOTOS
+	.galeria-fotos {
+		min-width: auto;
+	}
+
+	// MENU LATERAL FIJO
+	.flecha-menu-g.centrarVertical {
+		position: absolute;
+		top: auto;
+		bottom: 0;
+		transform: translate(0, 0);
+	}
+
+	// CONTENIDOS AUTOMATICOS
+	.dato-especial img {width: 100%;border-right: none;}
+	.cont-galeria-fotos{ 
+		display: block;
+	} 
+
+	.titulo_portada_a{
+		font-size:50px;
+	}
+	 .parallax-mirror {
+  display: none;
+ }
+
+ .enviar_boton{
+ 	padding: 0.80em 0.5em !important; 
+ }
+}
